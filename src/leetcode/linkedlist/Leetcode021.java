@@ -1,18 +1,10 @@
 package leetcode.linkedlist;
 
-
 public class Leetcode021 {
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-    }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode p1 = l1, p2 = l2;
-        ListNode head = null;
+        ListNode head = new ListNode(-1);
         ListNode p = head;
 
         while (p1!=null && p2!=null){
@@ -25,10 +17,12 @@ public class Leetcode021 {
             }
             p = p.next;
         }
-        while (p1!=null) p.next = p1;
-        while (p2!=null) p.next = p2;
 
-        return head;
+        if (p1!=null) p.next = p1;
+        if (p2!=null) p.next = p2;
+
+        return head.next;
     }
+
 
 }

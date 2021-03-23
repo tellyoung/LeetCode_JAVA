@@ -2,24 +2,31 @@ package yuty_test;
 
 class Solution {
     public static void main(String[] args) {
-        String res = "";
-        String str = "cbbd";
-        for (int i=0; i<str.length()-1; i++){
-            for (int j= i+1;j<=str.length();j++){
-                String s = str.substring(i, j);
-                int p1 = 0, p2 = s.length()-1;
-                while(p1 < p2){
-                    if (s.charAt(p1) != s.charAt(p2)){
-                        break;
+        String s = "cbbd";
+        int len = s.length();
+        boolean[][] dp = new boolean[len][len];
+        String max = "";
+        for (int i = 0; i < len; i++) {
+            dp[i][i] = true;
+        }
+
+        for (int i = len-1; i >=0 ; i--) {
+            for (int j = i; j < len; j++) {
+                if (s.charAt(j) == s.charAt(i)){
+                    if (j-i<2){
+                        if (max.length() < j-i+1) max = s.substring(i, j+1);
+                        dp[i][j] = true;
+                    }else {
+                        if (dp[i+1][j-1]){
+                            if (max.length() < j-i+1) max = s.substring(i, j+1);
+                            dp[i][j] = true;
+                        }
                     }
-                    p1+=1;
-                    p2-=1;
-                }
-                if (p1>=p2 && s.length() > res.length()){
-                    res = s;
                 }
             }
         }
-        System.out.println(res.toString());
+        System.out.println(max);
+
+
     }
 }
