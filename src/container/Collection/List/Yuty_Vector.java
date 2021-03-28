@@ -40,5 +40,6 @@ public class Yuty_Vector {
     public static void main(String[] args) {
         MyVector my = new MyVector();
         my.show();
+
     }
 }

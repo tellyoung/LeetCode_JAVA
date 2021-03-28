@@ -13,7 +13,7 @@ public class LearnStringBuilder {
 
         strbu.deleteCharAt(0);
         strbu.delete(0, 2);
-
+        System.out.println(strbu.charAt(strbu.length()-1));
         strbu.reverse();
 
         System.out.println(strbu);
